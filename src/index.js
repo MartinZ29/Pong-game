@@ -17,17 +17,41 @@ class Game {
 		this.context.strokeStyle = 'white';
 		this.context.stroke();
 	}
+	drawBoard(){
+		this.context.fillStyle = 'red';
+		this.context.fillRect(0,0,this.width,this.height);
+		this.drawLine
+	}
+
+	render(){
+		
+		
+	}
 }
 
 var game = new Game();
 
 const ms = 30;
+// (function gameLoop(){
+// 	console.log(game.height,game.width)
+// 	setTimeout(gameLoop,ms);
+// }());
+
+// (function gameLoop(){
+// 	game.drawLine();
+// 	setTimeout(gameLoop,ms);
+// }());
+
+
 (function gameLoop(){
-	console.log(game.height,game.width)
+	console.log('hi');
+	game.render();
 	setTimeout(gameLoop,ms);
 }());
 
-(function gameLoop(){
-	game.drawLine();
-	setTimeout(gameLoop,ms);
-}());
+// class Board {
+// 	constructor(width,height) {
+// 		this.width = width;
+// 		this.height = height;
+// 	}
+
