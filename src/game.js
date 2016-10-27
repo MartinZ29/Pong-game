@@ -1,4 +1,7 @@
 import Paddle from './paddle.js';
+import Board from './board.js';
+import {player1Keys,player2Keys} from './key.js';
+
 
 const gap = 10;
 
@@ -10,28 +13,16 @@ export default class Game{
 		this.height = canvas.height;
 		this.context = canvas.getContext('2d');
 		this.context.fillStyle = 'white';
+        
+        this.board = new Board(this.height,this.width);
 
-        this.p1 = new Paddle(this.height,gap);
-        this.p2 = new Paddle(this.height,this.width-4-gap);
-	}
-
-	drawLine(){
-        this.context.fillStyle = 'white';
-		this.context.setLineDash([10,10]);
-		this.context.beginPath();
-		this.context.moveTo(this.width/2,0);
-		this.context.lineTo(this.width/2,this.height);
-		this.context.strokeStyle = 'white';
-		this.context.stroke();
-	}
-	drawBoard(){
-		this.context.fillStyle = 'black';
-		this.context.fillRect(0,0,this.width,this.height);
-		this.drawLine();
+        this.p1 = new Paddle(this.height,gap,'blue',player1Keys);
+        this.p2 = new Paddle(this.height,this.width-4-gap,'red',player2Keys);
 	}
 
 render() {
-    this.drawBoard();
+    // this.drawBoard();
+    this.board.render(this.context);
     this.p1.render(this.context);
     this.p2.render(this.context);
 }
