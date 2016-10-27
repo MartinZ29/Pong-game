@@ -5,7 +5,7 @@ import Paddle from './paddle.js';
 
 var game = new Game();
 
-const ms = 30;
+const fps = 30;
 // (function gameLoop(){
 // 	console.log(game.height,game.width)
 // 	setTimeout(gameLoop,ms);
@@ -19,7 +19,7 @@ const ms = 30;
 
 (function gameLoop(){
 	game.render();
-	setTimeout(gameLoop,ms);
+	setTimeout(gameLoop,fps);
 }());
 
 // class Board {

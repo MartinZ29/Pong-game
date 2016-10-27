@@ -11,8 +11,8 @@ export default class Game{
 		this.context = canvas.getContext('2d');
 		this.context.fillStyle = 'white';
 
-        this.p1 = new Paddle(this.height,5);
-        this.p2 = new Paddle(this.height,this.width-10);
+        this.p1 = new Paddle(this.height,gap);
+        this.p2 = new Paddle(this.height,this.width-4-gap);
 	}
 
 	drawLine(){
