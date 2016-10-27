@@ -38,22 +38,33 @@ module.exports = {
 		}]
 	},
 	devtool: 'eval-source-map',
+
 	devServer: {
-		contentBase: process.cwd(),
+   inline: true,
+   host: '0.0.0.0',
+   port: '3000',
+   watchOptions: {
+      aggregateTimeout: 300,
+      poll: true
+   }
+},
 
-		historyApiFallback: true,
-		hot: true,
-		inline: true,
-		progress: true,
+	// devServer: {
+	// 	contentBase: process.cwd(),
 
-		// display only errors to reduce the amount of output
-		stats: 'errors-only',
+	// 	historyApiFallback: true,
+	// 	hot: true,
+	// 	inline: true,
+	// 	progress: true,
 
-		// parse host and port from env so this is easy
-		// to customize
-		host: process.env.HOST,
-		port: process.env.PORT
-	},
+	// 	// display only errors to reduce the amount of output
+	// 	stats: 'errors-only',
+
+	// 	// parse host and port from env so this is easy
+	// 	// to customize
+	// 	host: process.env.HOST,
+	// 	port: process.env.PORT
+	// },
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new OpenBrowserPlugin({ url: 'http://localhost:8080/webpack-dev-server/bundle'}),
