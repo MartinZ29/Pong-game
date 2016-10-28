@@ -3543,22 +3543,32 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Ball = function Ball() {
-    _classCallCheck(this, Ball);
+var Ball = function () {
+    function Ball() {
+        _classCallCheck(this, Ball);
 
-    this.x = 150;
-    this.y = 50;
-    this.vx = 1;
-    this.vy = 1;
-    this.speed = 5;
-}
-// render(context){
+        this.x = 150;
+        this.y = 50;
+        this.vx = 1;
+        this.vy = 1;
+        this.speed = 5;
+    }
 
-// }
+    _createClass(Ball, [{
+        key: "render",
+        value: function render(context) {
+            // this.x += this.vx;
+            // this.y += this.vy;
+            // this.draw(context);
+        }
+    }]);
 
-;
+    return Ball;
+}();
 
 exports.default = Ball;
 
@@ -3663,6 +3673,7 @@ var Game = function () {
 
     this.p1 = new _paddle2.default(this.height, gap, 'blue', _key.player1Keys);
     this.p2 = new _paddle2.default(this.height, this.width - 4 - gap, 'red', _key.player2Keys);
+    this.ball = new _ball2.default(this.height, this.width);
   }
 
   _createClass(Game, [{
@@ -3672,6 +3683,7 @@ var Game = function () {
       this.board.render(this.context);
       this.p1.render(this.context);
       this.p2.render(this.context);
+      this.ball.render(this.context);
     }
   }]);
 
@@ -3695,7 +3707,7 @@ var player1Keys = exports.player1Keys = {
     down: 90
 };
 
-var player2Key = exports.player2Key = {
+var player2Keys = exports.player2Keys = {
     up: 38,
     down: 40
 };
@@ -3748,13 +3760,16 @@ var Paddle = function () {
                     this.moveDown();
                     break;
                 default:
-                    return;}
+                    return;
+            }
         }
     }, {
         key: 'moveUp',
         value: function moveUp() {
             // console.log('up')
-            this.y -= this.speed;
+            if (this.y > 0) {
+                this.y -= this.speed;
+            }
         }
     }, {
         key: 'moveDown',

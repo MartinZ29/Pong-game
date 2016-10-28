@@ -15,7 +15,6 @@ export default class Game{
 		this.context.fillStyle = 'white';
 
         this.board = new Board(this.height,this.width);
-
         this.p1 = new Paddle(this.height,gap,'blue',player1Keys);
         this.p2 = new Paddle(this.height,this.width-4-gap,'red',player2Keys);
         this.ball = new Ball(this.height, this.width);
@@ -27,7 +26,7 @@ render() {
     this.board.render(this.context);
     this.p1.render(this.context);
     this.p2.render(this.context);
-    this.ball.render(this.context);
+    this.ball.render(this.context, this.p1, this.p2);
 }
 
 }
