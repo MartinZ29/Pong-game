@@ -7,8 +7,8 @@ export default class Ball{
         this.speed = 5
 
     }
-    // render(context){
+    render(context){
 
-    // }
+    }
 
 }

@@ -29,7 +29,8 @@ export default class Paddle {
 
     moveUp(){
         // console.log('up')
-        this.y -= this.speed;
+        if(this.y > 0){
+        this.y -= this.speed;}
     }
 
     moveDown(){
