@@ -29,8 +29,10 @@ export default class Ball{
          this.x = this.width/2;
          this.y = this.height/2;
          this.vy = Math.floor(Math.random()*12-6);
-         this.vx = (7 - Math.abs(this.vy));
+         this.vx = 1;
      }
+
+    //  (7 - Math.abs(this.vy))
 
      goal(){
            if(this.x <= 0+this.radius) {
@@ -43,14 +45,14 @@ export default class Ball{
 
     paddleCollision(p1, p2){
         if (this.vx > 0) {
-          if (this.x >= p2.x) {
+          if (this.x >= p2.x-this.radius) {
               if (this.y >= p2.y + this.radius && this.y <= (p2.y + p2.height)) {
                   this.vx *= -1;
               }
           }
 
       } else {
-          if (this.x <= p1.x + p1.width) {
+          if (this.x <= p1.x +p1.width +this.radius) {
               if (this.y >= p1.y - this.radius && this.y <= (p1.y + p1.height)) {
                   this.vx *= -1;
               }
