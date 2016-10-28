@@ -4,7 +4,7 @@ export const player1Keys = {
 };
 
 
-export const player2Key = {
+export const player2Keys = {
     up:38,
     down:40,
 }
