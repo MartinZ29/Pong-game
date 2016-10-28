@@ -4,8 +4,7 @@
 export default class Ball{
     constructor(height,width){
         
-        this.vy = 1;
-        this.vx = 1;
+        
         this.height = height;
         this.width = width;
         this.ballReset();
@@ -30,8 +29,8 @@ export default class Ball{
      ballReset(){
          this.x = this.width/2;
          this.y = this.height/2;
-         this.vy = 1;
-         this.vx = 1;
+         this.vy = Math.floor(Math.random()*12-6);
+         this.vx = (7 - Math.abs(this.vy));
      }
 
      goal(){
