@@ -23,9 +23,6 @@ export default class Ball{
         if(this.y <= 0 + this.radius || this.y >= this.height - this.radius){
             this.vy *= -1
         };
-        // if(this.x >= this.boardHeight/2-p1.(this.height)/2 && this.x <= this.boardHeight/2+p1.(this.height)/2){
-        //     this.vx *= -1
-        // };
      }
 
      ballReset(){
@@ -44,39 +41,34 @@ export default class Ball{
             } 
      }
 
-//      paddleCollision(p1, p2){
-//          if (this.vx > 0) {
-//       const inRightEnd = p2.x <= this.x + this.width &&
-//       p2.x > this.x - this.vx + this.width;
-//       if (inRightEnd) {
-//          const collisionDiff = this.x + this.width - p2.x;
-//          const k = collisionDiff / this.vx;
-//          const y = this.vy * k + (this.y - this.vy);
-//          const hitRightPaddle = y >= p2.y && y + this.height <=
-//          p2.y + p2.height;
-//          if (hitRightPaddle) {
-//             this.x = p2.x - this.width;
-//             this.y = Math.floor(this.y - this.vy + this.vy * k);
-//             this.vx = -this.vx;
-//          }
-//       }
-//    }
-//  else {
-//       const inLeftEnd = p1.x + p1.width >= this.x;
-//       if (inLeftEnd) {
-//          const collisionDiff = p1.x + p1.width - this.x;
-//          const k = collisionDiff / -this.vx;
-//          const y = this.vy * k + (this.y - this.vy);
-//          const hitLeftPaddle = y >= p1.y && y + this.height <=
-//          p1.y + p1.height;
-//          if (hitLeftPaddle) {
-//             this.x = p1.x + p1.width;
-//             this.y = Math.floor(this.y - this.vy + this.vy * k);
-//             this.vx = -this.vx;
-//          }
-//       }
-//    }  
-//      }
+    paddleCollision(p1, p2){
+        if (this.vx > 0) {
+          if (this.x >= p2.x) {
+              if (this.y >= p2.y + this.radius && this.y <= (p2.y + p2.height)) {
+                  this.vx *= -1;
+              }
+          }
+
+      } else {
+          if (this.x <= p1.x + p1.width) {
+              if (this.y >= p1.y - this.radius && this.y <= (p1.y + p1.height)) {
+                  this.vx *= -1;
+              }
+          }
+      }
+};
+
+
+    // score(p1Score,p2Score){
+    //     if(this.x<=0 + this.redius){
+    //         this.reset();
+    //         p1Score.score++;
+    //     } else if (this.x >= game.width){
+    //         this.reset();
+    //             p2Score.score++;
+    //     }
+    // }
+
 
     render(context, p1, p2){
 
@@ -85,12 +77,13 @@ export default class Ball{
         this.y += this.vy;
         this.draw(context);
         this.goal();
+        this.paddleCollision(p1,p2);
+        // this.score(p1Score,p2Score);
         
         // const hitLeft = this.x >= this.width;
         // const hitRight = this.x + this.size <= 0;
         // const hitTop = this.y + this.size <= 0;
         // const hitBottom = this.y >= this.height;
-        //this.paddleCollision(p1,p2);
     }
 
 }

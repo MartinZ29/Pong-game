@@ -2,6 +2,7 @@ import Paddle from './paddle.js';
 import Board from './board.js';
 import {player1Keys,player2Keys} from './key.js';
 import Ball from './ball.js';
+import Score from './score.js';
 
 const gap = 10;
 
@@ -18,15 +19,19 @@ export default class Game{
         this.p1 = new Paddle(this.height,gap,'blue',player1Keys);
         this.p2 = new Paddle(this.height,this.width-5-gap,'red',player2Keys);
         this.ball = new Ball(this.height, this.width);
+        // this.p1Score = new Score();
+        // this.p2Score = new Score();
 
 	}
 
 render() {
-    // this.drawBoard();
     this.board.render(this.context);
     this.p1.render(this.context);
     this.p2.render(this.context);
     this.ball.render(this.context, this.p1, this.p2);
+    // this.ball.render(this.context, this.p1, this.p2, this.p1Score, this.p2Score)
+    // this.p1Score.render(this.context);
+    // this.p2Score.render(this.context);
 }
 
 }
