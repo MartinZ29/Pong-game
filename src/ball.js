@@ -20,10 +20,12 @@ export default class Ball{
     }
     
      bounce(){
-    
-            if(this.y <= 0 + this.radius || this.y >= this.height - this.radius){
-                this.vy *= -1
-            };
+        if(this.y <= 0 + this.radius || this.y >= this.height - this.radius){
+            this.vy *= -1
+        };
+        // if(this.x >= this.boardHeight/2-p1.(this.height)/2 && this.x <= this.boardHeight/2+p1.(this.height)/2){
+        //     this.vx *= -1
+        // };
      }
 
      ballReset(){
@@ -34,12 +36,12 @@ export default class Ball{
      }
 
      goal(){
-           if(this.x <= 0+this.radius || this.x >= this.width-this.radius)
-           {
-        
-        this.ballReset();
-    }
-        
+           if(this.x <= 0+this.radius) {
+               this.ballReset()
+           } ;
+           if (this.x >= this.width-this.radius){
+               this.ballReset();this.vx *= -1;
+            } 
      }
 
 //      paddleCollision(p1, p2){
