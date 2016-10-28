@@ -1,4 +1,4 @@
-export defualt class Ball{
+export default class Ball{
     constructor(){
         this.x = 150
         this.y = 50
@@ -7,8 +7,8 @@ export defualt class Ball{
         this.speed = 5
 
     }
-    render(context){
+    // render(context){
 
-    }
+    // }
 
 }

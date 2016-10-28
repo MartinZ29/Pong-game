@@ -2,31 +2,31 @@ export default class Board {
 
     
         constructor(height,width){
-            this.width = width;
             this.height = height;
+            this.width = width;
+            
         }
     
 
     drawLine(context){
-        this.context.fillStyle = 'white';
-		this.context.setLineDash([10,10]);
-		this.context.beginPath();
-		this.context.moveTo(this.width/2,0);
-		this.context.lineTo(this.width/2,this.height);
-		this.context.strokeStyle = 'white';
-		this.context.stroke();
+        context.fillStyle = 'white';
+		context.setLineDash([10,10]);
+		context.beginPath();
+		context.moveTo(this.width/2, 0);
+		context.lineTo(this.width/2, this.height);
+		context.strokeStyle = 'white';
+		context.stroke();
 	}
 	drawBoard(context){
-		this.context.fillStyle = 'black';
-		this.context.fillRect(0,0,this.width,this.height);
-		this.drawLine();
+		context.fillStyle = 'black';
+		context.fillRect(0, 0, this.width, this.height);
+		drawLine();
 	}
 
     render(context){
+        context.clearRect( 0, 0, this.width, this.height);
         this.drawLine(context);
-        this.drawBoard(context);
+        
     }
-
-
 
 }
