@@ -48,6 +48,8 @@ export default class Ball{
           if (this.x >= p2.x-this.radius) {
               if (this.y >= p2.y + this.radius && this.y <= (p2.y + p2.height)) {
                   this.vx *= -1;
+                  var ping = new Audio('../sounds/pong-01.wav');
+                  ping.play()
               }
           }
 //  } 
@@ -55,6 +57,8 @@ export default class Ball{
          else if (this.x <= p1.x +p1.width +this.radius) {
               if (this.y >= p1.y - this.radius && this.y <= (p1.y + p1.height)) {
                   this.vx *= -1;
+                  var ping = new Audio('../sounds/pong-01.wav');
+                  ping.play()
               }
           }
     //   }
