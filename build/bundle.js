@@ -3571,6 +3571,8 @@ var Ball = function () {
         value: function bounce() {
             if (this.y <= 0 + this.radius || this.y >= this.height - this.radius) {
                 this.vy *= -1;
+                var ping = new Audio('../sounds/pong-03.wav');
+                ping.play();
             };
         }
     }, {
@@ -3578,8 +3580,8 @@ var Ball = function () {
         value: function ballReset() {
             this.x = this.width / 2;
             this.y = this.height / 2;
-            this.vy = Math.floor(Math.random() * 12 - 6);
-            this.vx = 7 - Math.abs(this.vy);
+            this.vy = Math.floor(Math.random() * 11 - 5);
+            this.vx = 9 - Math.abs(this.vy);
         }
     }, {
         key: 'goal',
@@ -3587,33 +3589,32 @@ var Ball = function () {
             if (this.x <= 0 + this.radius) {
                 this.ballReset();
                 p1Score.score++;
+                var ping = new Audio('../sounds/pong-02.wav');
+                ping.play();
             };
             if (this.x >= this.width - this.radius) {
                 this.ballReset();this.vx *= -1;
                 p2Score.score++;
+                var ping = new Audio('../sounds/pong-02.wav');
+                ping.play();
             }
         }
     }, {
         key: 'paddleCollision',
         value: function paddleCollision(p1, p2) {
-            // if (this.vx > 0) {
             if (this.x >= p2.x - this.radius) {
                 if (this.y >= p2.y + this.radius && this.y <= p2.y + p2.height) {
                     this.vx *= -1;
                     var ping = new Audio('../sounds/pong-01.wav');
                     ping.play();
                 }
-            }
-            //  } 
-            //   else {
-            else if (this.x <= p1.x + p1.width + this.radius) {
-                    if (this.y >= p1.y - this.radius && this.y <= p1.y + p1.height) {
-                        this.vx *= -1;
-                        var ping = new Audio('../sounds/pong-01.wav');
-                        ping.play();
-                    }
+            } else if (this.x <= p1.x + p1.width + this.radius) {
+                if (this.y >= p1.y - this.radius && this.y <= p1.y + p1.height) {
+                    this.vx *= -1;
+                    var ping = new Audio('../sounds/pong-01.wav');
+                    ping.play();
                 }
-            //   }
+            }
         }
     }, {
         key: 'render',
@@ -3625,11 +3626,6 @@ var Ball = function () {
             this.draw(context);
             this.goal(p1Score, p2Score);
             this.paddleCollision(p1, p2);
-
-            // const hitLeft = this.x >= this.width;
-            // const hitRight = this.x + this.size <= 0;
-            // const hitTop = this.y + this.size <= 0;
-            // const hitBottom = this.y >= this.height;
         }
     }]);
 
@@ -3741,7 +3737,7 @@ var Game = function () {
 
     this.board = new _board2.default(this.height, this.width);
     this.p1 = new _paddle2.default(this.height, gap, 'blue', _key.player1Keys);
-    this.p2 = new _paddle2.default(this.height, this.width - 5 - gap, 'red', _key.player2Keys);
+    this.p2 = new _paddle2.default(this.height, this.width - 5 - gap, 'green', _key.player2Keys);
     this.p1Score = new _score2.default(225, 85);
     this.p2Score = new _score2.default(75, 85);
     this.ball = new _ball2.default(this.height, this.width);
@@ -3845,7 +3841,7 @@ var Paddle = function () {
     }, {
         key: 'moveDown',
         value: function moveDown() {
-            if (this.y + this.height + this.speed <= this.boardHeight) {
+            if (this.y + this.height <= this.boardHeight) {
                 this.y += this.speed;
             }
         }
@@ -3913,7 +3909,7 @@ exports = module.exports = __webpack_require__(45)();
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n   margin: 0;\n   padding: 0;\n   border: 0;\n   font-size: 100%;\n   font: inherit;\n   vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n   display: block;\n}\nbody {\n   line-height: 1;\n}\nol, ul {\n   list-style: none;\n}\nblockquote, q {\n   quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n   content: '';\n   content: none;\n}\ntable {\n   border-collapse: collapse;\n   border-spacing: 0;\n}\n\n/* Game Styles */\n\n@font-face {\n    font-family: 'PressStart2P Web';\n    src: url(" + __webpack_require__(20) + ");\n    src: url(" + __webpack_require__(20) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(51) + ") format('woff2'),\n         url(" + __webpack_require__(50) + ") format('woff'),\n         url(" + __webpack_require__(49) + ") format('truetype'),\n         url(" + __webpack_require__(48) + "#press_start_2pregular) format('svg');\n    font-weight: normal;\n    font-style: normal;\n}\nbody {\n   font-family: 'PressStart2P Web', monospace;\n   margin: 0 auto;\n   text-align: center;\n}\nh1 {\n   margin-top: 20px;\n}\n#game {\n   background-color: black;\n   display: block;\n   height: 256px;\n   margin: 20px auto;\n   width: 512px;\n}\n.players {\n   display: inline-flex;\n   justify-content: space-between;\n   text-align: center;\n   width: 512px;\n}\n\n\n\n", ""]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n   margin: 0;\n   padding: 0;\n   border: 0;\n   font-size: 100%;\n   font: inherit;\n   vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n   display: block;\n}\nbody {\n   line-height: 1;\n}\nol, ul {\n   list-style: none;\n}\nblockquote, q {\n   quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n   content: '';\n   content: none;\n}\ntable {\n   border-collapse: collapse;\n   border-spacing: 0;\n}\n\n/* Game Styles */\n\n@font-face {\n    font-family: 'PressStart2P Web';\n    src: url(" + __webpack_require__(20) + ");\n    src: url(" + __webpack_require__(20) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(51) + ") format('woff2'),\n         url(" + __webpack_require__(50) + ") format('woff'),\n         url(" + __webpack_require__(49) + ") format('truetype'),\n         url(" + __webpack_require__(48) + "#press_start_2pregular) format('svg');\n    font-weight: normal;\n    font-style: normal;\n}\nbody {\n   font-family: 'PressStart2P Web', monospace;\n   margin: 0 auto;\n   text-align: center;\n   background-image: url('/fonts/pic.png');\n   background-size:  cover;\n}\nh1 {\n   margin-top: 20px;\n}\n#game {\n   background-color: pink;\n   display: block;\n   height: 20%;\n   margin: 20px auto;\n   width: 50%;\n}\n.players {\n   display: inline-flex;\n   justify-content: space-between;\n   text-align: center;\n   width: 512px;\n}\n\n\n\n", ""]);
 
 // exports
 
