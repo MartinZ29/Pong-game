@@ -64,16 +64,18 @@ body {
    font-family: 'PressStart2P Web', monospace;
    margin: 0 auto;
    text-align: center;
+   background-image: url('/fonts/pic.png');
+   background-size:  cover;
 }
 h1 {
    margin-top: 20px;
 }
 #game {
-   background-color: black;
+   background-color: pink;
    display: block;
-   height: 256px;
+   height: 20%;
    margin: 20px auto;
-   width: 512px;
+   width: 50%;
 }
 .players {
    display: inline-flex;

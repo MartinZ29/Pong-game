@@ -8,6 +8,7 @@ export default class Score {
     draw(context) {
         context.font = "30px Helvetica";
         context.fillText(this.score, this.x, this.y);
+        
     }
 
     render(context) {
