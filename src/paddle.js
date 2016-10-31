@@ -33,7 +33,7 @@ export default class Paddle {
     }
 
     moveDown(){
-        if(this.y + this.height + this.speed <= this.boardHeight){
+        if(this.y + this.height <= this.boardHeight){
         this.y += this.speed;}
     }
 
