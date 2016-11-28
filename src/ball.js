@@ -1,10 +1,6 @@
 
-
-
 export default class Ball {
     constructor(height, width) {
-
-
         this.height = height;
         this.width = width;
         this.ballReset();
@@ -25,7 +21,6 @@ export default class Ball {
             var ping = new Audio('../sounds/pong-03.wav');
             ping.play();
         };
-
     }
 
     ballReset() {
@@ -58,7 +53,6 @@ export default class Ball {
                 ping.play()
             }
         }
-
         else if (this.x <= p1.x + p1.width + this.radius) {
             if (this.y >= p1.y && this.y <= (p1.y + p1.height)) {
                 this.vx *= -1;
@@ -69,7 +63,6 @@ export default class Ball {
     };
 
     render(context, p1, p2, p1Score, p2Score) {
-
         this.bounce();
         this.x += this.vx;
         this.y += this.vy;
@@ -77,5 +70,4 @@ export default class Ball {
         this.goal(p1Score, p2Score);
         this.paddleCollision(p1, p2);
     }
-
 }

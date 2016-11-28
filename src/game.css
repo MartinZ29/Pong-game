@@ -64,7 +64,7 @@ body {
    font-family: 'PressStart2P Web', monospace;
    margin: 0 auto;
    text-align: center;
-   /*background-image: url('../public/img/pic.png');*/
+   background: url('../public/img/pic.png');
    background-size:  cover;
 }
 h1 {

@@ -1,13 +1,9 @@
 export default class Board {
-
-    
         constructor(height,width){
             this.height = height;
             this.width = width;
             
         }
-    
-
     drawLine(context){
         context.fillStyle = 'white';
 		context.setLineDash([10,10]);
@@ -22,11 +18,8 @@ export default class Board {
 		context.fillRect(0, 0, this.width, this.height);
 		drawLine();
 	}
-
     render(context){
         context.clearRect( 0, 0, this.width, this.height);
         this.drawLine(context);
-        
     }
-
 }
