@@ -1,6 +1,6 @@
 # Pong Game
 
-![image]();
+![image](https://github.com/MartinZ29/pong-game/blob/master/documentation/screenshot.png);
 
 # Technology used
 
